@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+const AlertButton = ({ message, children }) => {
+  const handleClick = () => {
+    alert(message);
+  };
+
+  return <button onClick={handleClick}>{children}</button>;
+};
+
+const Toolbar = () => {
+  
+    const buttons = [
+      { message: 'Downloading!', children: 'Download File' },
+      { message: 'Sharing!', children: 'Share Document' },
+      { message: 'Deleting!', children: 'Delet Item' },
+    ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    buttons.map(button => 
+      <AlertButton
+          message={button.message}
+          children={button.message}
+          />)
+  )
+};
 
-export default App;
+export default Toolbar;
